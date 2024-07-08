@@ -11,7 +11,8 @@ class PostController extends Controller
     public function index($locale)
     {
         $posts = getPosts($locale);
-        return view('posts.index', compact('posts'));
+        $title = "Blog " + app()->getLocale();
+        return view('posts.index', compact('posts', 'title'));
     }
 
     public function show($locale, $slug)

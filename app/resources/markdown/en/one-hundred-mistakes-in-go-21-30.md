@@ -1,1 +1,0 @@
-# One Hundred Mistakes in Go (1-10)

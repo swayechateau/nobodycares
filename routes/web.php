@@ -12,4 +12,4 @@ Route::group(['prefix' => '{locale}', 'middleware' => 'web'], function () {
     Route::get('posts/{slug}', [PostController::class, 'show']);
 });
 
-Route::get('{locale}/posts', [PostController::class, 'index']);
+Route::get('{locale}/posts', [PostController::class, 'index'])->name('posts.index');
