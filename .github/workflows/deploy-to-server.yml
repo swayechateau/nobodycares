@@ -20,7 +20,7 @@ jobs:
 
     - name: Deploy to Remote Server
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+        ssh -tt -v -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           if [ -d "nobodycares" ]; then
             cd nobodycares
             git pull
