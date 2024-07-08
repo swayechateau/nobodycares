@@ -1,28 +1,32 @@
-# name: Deploy to Remote Server
+name: Deploy to Remote Server
 
-# on:
-#   push:
-#     branches:
-#       - main  # Trigger the workflow on push to main branch
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to main branch
 
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
-#     steps:
-#     - name: Checkout Repository
-#       uses: actions/checkout@v3  # Check out the latest code
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3  # Check out the latest code
 
-#     - name: Set up SSH
-#       uses: webfactory/ssh-agent@v0.6.1  # Start the SSH agent and add the private key
-#       with:
-#         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.6.1  # Start the SSH agent and add the private key
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-#     - name: Clone Repo on Remote Server
-#       run: |
-#         ssh -o StrictHostKeyChecking=no user@remote_server_ip << 'EOF'
-#           cd /desired/path/on/server
-#           git clone https://github.com/your-username/your-repo.git
-#         EOF
-#       env:
-#         SSH_AUTH_SOCK: ${{ secrets.SSH_AUTH_SOCK }}
+    - name: Deploy to Remote Server
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+          if [ -d "nobodycares" ]; then
+            cd nobodycares
+            git pull
+          else
+            git clone https://github.com/swayechateau/nobodycares.git
+          fi
+        EOF
+      env:
+        SSH_AUTH_SOCK: ${{ secrets.SSH_AUTH_SOCK }}
