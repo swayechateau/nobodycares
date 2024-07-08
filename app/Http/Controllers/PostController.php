@@ -8,10 +8,17 @@ use League\CommonMark\CommonMarkConverter;
 
 class PostController extends Controller
 {
+    public function home($locale)
+    {
+        // $posts = getPosts($locale);
+        $title = "Blog " . app()->getLocale();
+        return view('index', compact('title'));
+    }
+
     public function index($locale)
     {
         $posts = getPosts($locale);
-        $title = "Blog " + app()->getLocale();
+        $title = "Blog " . app()->getLocale();
         return view('posts.index', compact('posts', 'title'));
     }
 
@@ -27,6 +34,13 @@ class PostController extends Controller
 
         $content = parseMarkdown($path);
         return view('posts.show', compact('content', 'title'));
+    }
+
+    public function categories($locale)
+    {
+        $categories = ['Laravel', 'PHP', 'JavaScript', 'Vue.js', 'React.js'];
+        $title = "Categories";
+        return view('posts.categories', compact('categories', 'title'));
     }
 }
 
