@@ -29,7 +29,7 @@
 </style>
 
 <header class="app-header">
-    <div>
+    <div class="app-logo">
         NC
     </div>
     <nav class="navigation">
@@ -37,7 +37,7 @@
         <a href="{{ route('posts.index', app()->getLocale()) }}">Posts</a>
         <a href="{{ route('categories', app()->getLocale()) }}">Categories</a>
     </nav>
-    <div>
+    <div class="app-header-right">
         <!-- Language switcher -->
             
         <!-- Theme switcher -->

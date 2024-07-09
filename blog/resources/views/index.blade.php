@@ -1,20 +1,14 @@
 @extends('layouts.main')
 @section('content')
 <style>
-    a {
-        text-decoration: none;
-        color: initial;
-    }
-    img {
-        width: 100%;
-    }
+
     section {
         margin: 20px 0;
         padding: 20px 10px;
     }
     .posts-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
         gap: 20px;
     }
     .posts-card {
@@ -81,18 +75,36 @@
                         <small>By NobodyCares</small>
                     </div>
                 </a>
-                <div class="posts-card">
-                    <img src="https://via.placeholder.com/150" alt="Post Image">
-                    <h3>Post Title</h3>
-                    <p>Post Excerpt</p>
-                    <a href="#">Read More</a>
-                </div>
-                <div class="posts-card">
-                    <img src="https://via.placeholder.com/150" alt="Post Image">
-                    <h3>Post Title</h3>
-                    <p>Post Excerpt</p>
-                    Read More</a>
-                </div>
+                <a href="#" class="posts-card">
+                    <div class="posts-card-image">
+                        <img src="https://via.placeholder.com/150" alt="Post Image">
+                    </div>
+                    <div class="posts-card-body">
+                        <div class="text-right mb-10">
+                            <div class="pill">Category</div>
+                        </div>
+                        <h3>100 Mistakes in Go</h3>
+                        <p>Part 1 in the 100 Mistakes of Go seriese</p>
+                    </div>
+                    <div class="posts-card-footer">
+                        <small>By NobodyCares</small>
+                    </div>
+                </a>
+                <a href="#" class="posts-card">
+                    <div class="posts-card-image">
+                        <img src="https://via.placeholder.com/150" alt="Post Image">
+                    </div>
+                    <div class="posts-card-body">
+                        <div class="text-right mb-10">
+                            <div class="pill">Category</div>
+                        </div>
+                        <h3>100 Mistakes in Go</h3>
+                        <p>Part 1 in the 100 Mistakes of Go seriese</p>
+                    </div>
+                    <div class="posts-card-footer">
+                        <small>By NobodyCares</small>
+                    </div>
+                </a>
             </div>
         </section>
         <section id="recent-posts">
