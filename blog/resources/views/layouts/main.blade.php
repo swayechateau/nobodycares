@@ -19,6 +19,13 @@
             display: flex;
             flex-direction: column;
         }
+        a {
+            text-decoration: none;
+            color: initial;
+        }
+        img {
+            width: 100%;
+        }
         main {
             flex: 1;
             padding: 20px;
