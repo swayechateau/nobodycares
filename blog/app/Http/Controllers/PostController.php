@@ -13,7 +13,6 @@ use App\Models\Post;
 class PostController extends Controller
 {
     // API endpoints
-
     public function rfPosts()
     {
         $locale = 'en';
@@ -27,7 +26,6 @@ class PostController extends Controller
 
     public function updatePosts()
     {
-
         // needs to be restricted to those with an api token
         try {
             cachePosts('en');
