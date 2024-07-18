@@ -8,8 +8,14 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.6.1/github-markdown.min.css" integrity="sha512-heNHQxAqmr9b5CZSB7/7NSC96qtb9HCeOKomgLFv9VLkH+B3xLgUtP73i1rM8Gpmfaxb7262LFLJaH/hKXyxyA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    @yield('styles')
     <style>
+        * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
         html, body {
             height: 100%;
             margin: 0;
@@ -23,6 +29,9 @@
             text-decoration: none;
             color: initial;
         }
+        a:hover {
+            text-decoration: none;
+        }
         img {
             width: 100%;
         }
@@ -34,6 +43,7 @@
 		@media (prefers-color-scheme: dark) {
 			body {
 				background-color: #0d1117;
+                color: #c9d1d9;
 			}
 		} 
 	</style>
@@ -44,5 +54,6 @@
     @yield('content')
     </main>
     @include('includes.footer')
+    @yield('scripts')
 </body>
 </html>

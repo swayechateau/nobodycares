@@ -34,7 +34,7 @@
         background-color: white;
         transition: 0.4s;
         border-radius: 50%;
-        background-image: url('https://img.icons8.com/ios-filled/50/000000/sun.png'); /* Sun icon */
+        background-image: url('https://img.icons8.com/ios-filled/50/000000/sun.png');
         background-size: 18px;
         background-position: center;
         background-repeat: no-repeat;
@@ -46,7 +46,7 @@
 
     input:checked + .slider:before {
         transform: translateX(26px);
-        background-image: url('https://img.icons8.com/ios-filled/50/000000/moon-symbol.png'); /* Moon icon */
+        background-image: url('https://img.icons8.com/ios-filled/50/000000/moon-symbol.png');
         background-size: 18px;
     }
 </style>

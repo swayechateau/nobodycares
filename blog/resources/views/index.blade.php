@@ -60,56 +60,52 @@
             <h2>Featured Posts</h2>
             <!-- Grid layout of featured posts -->
             <div class="posts-grid"> 
-                <a href="#" class="posts-card">
-                    <div class="posts-card-image">
-                        <img src="https://via.placeholder.com/150" alt="Post Image">
-                    </div>
-                    <div class="posts-card-body">
-                        <div class="text-right mb-10">
-                            <div class="pill">Category</div>
+                @foreach ($featuredPosts as $post)
+                <div class="posts-card">
+                    <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
+                        <div class="posts-card-image">
+                            <img src="{{$post['hero_image']}}" alt="{{$post['title']}}">
                         </div>
-                        <h3>100 Mistakes in Go</h3>
-                        <p>Part 1 in the 100 Mistakes of Go seriese</p>
-                    </div>
-                    <div class="posts-card-footer">
-                        <small>By NobodyCares</small>
-                    </div>
-                </a>
-                <a href="#" class="posts-card">
-                    <div class="posts-card-image">
-                        <img src="https://via.placeholder.com/150" alt="Post Image">
-                    </div>
-                    <div class="posts-card-body">
-                        <div class="text-right mb-10">
-                            <div class="pill">Category</div>
+                        <div class="posts-card-body">
+                            <div class="text-right mb-10">
+                                <div class="pill">{{$post['category']}}</div>
+                            </div>
+                            <h3>{{$post['title']}}</h3>
+                            <p>{{$post['excerpt']}}</p>
                         </div>
-                        <h3>100 Mistakes in Go</h3>
-                        <p>Part 1 in the 100 Mistakes of Go seriese</p>
-                    </div>
-                    <div class="posts-card-footer">
-                        <small>By NobodyCares</small>
-                    </div>
-                </a>
-                <a href="#" class="posts-card">
-                    <div class="posts-card-image">
-                        <img src="https://via.placeholder.com/150" alt="Post Image">
-                    </div>
-                    <div class="posts-card-body">
-                        <div class="text-right mb-10">
-                            <div class="pill">Category</div>
+                        <div class="posts-card-footer">
+                            <small>By {{$post['author']}}</small>
                         </div>
-                        <h3>100 Mistakes in Go</h3>
-                        <p>Part 1 in the 100 Mistakes of Go seriese</p>
-                    </div>
-                    <div class="posts-card-footer">
-                        <small>By NobodyCares</small>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                @endforeach
             </div>
         </section>
         <section id="recent-posts">
             <h2>Recent Posts</h2>
             <!-- List or grid of recent posts -->
+            <div class="posts-grid"> 
+                @foreach ($posts as $post)
+                <div class="posts-card">
+                <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
+                    
+                    <div class="posts-card-image">
+                        <img src="{{$post['hero_image']}}" alt="{{$post['title']}}">
+                    </div>
+                    <div class="posts-card-body">
+                        <div class="text-right mb-10">
+                            <div class="pill">{{$post['category']}}</div>
+                        </div>
+                        <h3>{{$post['title']}}</h3>
+                        <p>{{$post['excerpt']}}</p>
+                    </div>
+                    <div class="posts-card-footer">
+                        <small>By {{$post['author']}}</small>
+                    </div>
+                </a>
+                </div>
+                @endforeach
+            </div>
         </section>
         <section id="featured-categories">
             <h2>Featured Categories</h2>

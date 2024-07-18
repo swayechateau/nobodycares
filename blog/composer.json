@@ -8,6 +8,7 @@
         "php": "^8.2",
         "erusev/parsedown": "^1.7",
         "laravel/framework": "^11.9",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "scrivo/highlight.php": "^9.18",
         "symfony/yaml": "^7.1"

@@ -1,30 +1,36 @@
+
 <style>
     .app-header {
         background-color: #333;
         color: #fff;
         padding: 10px;
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .app-logo {
+        font-size: 2rem;
+        padding: 7px;
     }
     
     .navigation {
         flex: 1;
-        padding: .8rem;
-        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
     }
     
     .navigation a {
         color: #fff;
         text-decoration: none;
-        padding: 10px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
     }
     
     .navigation a:hover {
         background-color: #555;
-    }
-    
-    .site-logo {
-        font-size: 2rem;
-        padding: 7px;
     }
 </style>
 
@@ -39,7 +45,7 @@
     </nav>
     <div class="app-header-right">
         <!-- Language switcher -->
-            
+        
         <!-- Theme switcher -->
         @include('includes.theme-switcher')
     </div>
