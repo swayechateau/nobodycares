@@ -33,7 +33,7 @@
         <h2 class="text-center text-4xl mb-6 capitalize">Featured Posts</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             @foreach ($featuredPosts as $post)
-                <div class="p-2.5 overflow-hidden hover:bg-gray-800 hover:animate-subtle-bounce">
+                <div class="p-2.5 overflow-hidden hover:bg-gray-800 hover:animate-subtle-bounce rounded-lg">
                     <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
                         <div class="overflow-hidden">
                             <img src="{{ $post['hero_image'] }}" alt="{{ $post['title'] }}"
@@ -60,7 +60,7 @@
         <h2 class="text-center text-4xl mb-6 capitalize">Recent Posts</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             @foreach ($posts as $post)
-                <div class="p-2.5 overflow-hidden hover:bg-gray-800 hover:animate-subtle-bounce">
+                <div class="p-2.5 overflow-hidden hover:bg-gray-800 hover:animate-subtle-bounce rounded-lg">
                     <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
                         <div class="overflow-hidden">
                             <img src="{{ $post['hero_image'] }}" alt="{{ $post['title'] }}"
