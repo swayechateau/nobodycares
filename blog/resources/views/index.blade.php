@@ -1,114 +1,83 @@
 @extends('layouts.main')
+
 @section('content')
-<style>
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-[400px] w-full bg-cover bg-center rounded-bl-[200px]" style="background-image: url('https://swayechateau.com/media/image/anime-girl-futuristic-city-computer-short-hair-coffee-25464.jpeg');">
 
-    section {
-        margin: 20px 0;
-        padding: 20px 10px;
-    }
-    .posts-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-        gap: 20px;
-    }
-    .posts-card {
-        border: 1px solid #ccc;
-        padding: 10px;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-    .posts-card-image {
-        margin-top: -10px;
-        margin-left: -10px;
-        margin-right: -10px;
-        overflow: hidden;
-    }
-    .posts-card-image img{
-        border-top-right-radius: 9px;
-        border-top-left-radius: 9px;
-        border-bottom-right-radius: 1px;
-        border-bottom-left-radius: 30px;
-    }
-    .posts-card-body {
-        padding: 10px;
-    }
-    .posts-card-footer {
-        border-top: 1px solid #ccc;
-        padding: 10px;
-        text-align: center;
-    }
-    .text-right {
-        text-align: right;
-    }
-    .mb-10 {
-        margin-bottom: 10px;
-    }
-    .pill {
-        background-color: #333;
-        color: #fff;
-        padding: 5px 10px;
-        border-radius: 20px;
-        display: inline-block;
-    }
-    </style>
-        <section id="hero">
-            <h1>Welcome to NobodyCares</h1>
-            <h4>Where nobody cares about your path of failures to success.</h4>
-        </section>
+            <div class="absolute inset-0 bg-black h-full w-full bg-opacity-50 rounded-bl-[200px]"></div>
+            <div class="flex h-full items-center justify-center p-3 z-10 relative">
+                <div class="text-center">
+                    <h1 class="text-5xl font-light text-white text-shadow">
+                        Welcome to NobodyCares
+                    </h1>
+                    <div class="uppercase pl-2 mb-4 text-shadow text-white">
+                        Etching my journey, One post at a time
+                    </div>
+                    <a href="/blog/posts"
+                        class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
+                        View All Posts
+                    </a>
+                </div>
 
-        <section id="featured-posts">
-            <h2>Featured Posts</h2>
-            <!-- Grid layout of featured posts -->
-            <div class="posts-grid"> 
-                @foreach ($featuredPosts as $post)
-                <div class="posts-card">
+            </div>
+
+    </section>
+
+    <!-- Featured Posts Section -->
+    <section id="featured-posts" class="my-5 py-5 px-2.5">
+        <h2 class="text-center text-4xl mb-6 capitalize">Featured Posts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            @foreach ($featuredPosts as $post)
+                <div class="p-2.5 overflow-hidden">
                     <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
-                        <div class="posts-card-image">
-                            <img src="{{$post['hero_image']}}" alt="{{$post['title']}}">
+                        <div class="overflow-hidden">
+                            <img src="{{ $post['hero_image'] }}" alt="{{ $post['title'] }}" class="rounded-t-lg rounded-br-[300px]">
                         </div>
-                        <div class="posts-card-body">
-                            <div class="text-right mb-10">
-                                <div class="pill">{{$post['category']}}</div>
+                        <div class="p-2.5">
+                            <div class="flex justify-end mb-2.5">
+                                <div class="bg-gray-800 text-white px-2.5 py-1 rounded-full">{{ $post['category'] }}</div>
                             </div>
-                            <h3>{{$post['title']}}</h3>
-                            <p>{{$post['excerpt']}}</p>
+                            <h3>{{ $post['title'] }}</h3>
+                            <p>{{ $post['excerpt'] }}</p>
                         </div>
-                        <div class="posts-card-footer">
-                            <small>By {{$post['author']}}</small>
+                        <div class="border-t border-gray-300 p-2.5 text-center">
+                            <small>By {{ $post['author'] }}</small>
                         </div>
                     </a>
                 </div>
-                @endforeach
-            </div>
-        </section>
-        <section id="recent-posts">
-            <h2>Recent Posts</h2>
-            <!-- List or grid of recent posts -->
-            <div class="posts-grid"> 
-                @foreach ($posts as $post)
-                <div class="posts-card">
-                <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
-                    
-                    <div class="posts-card-image">
-                        <img src="{{$post['hero_image']}}" alt="{{$post['title']}}">
-                    </div>
-                    <div class="posts-card-body">
-                        <div class="text-right mb-10">
-                            <div class="pill">{{$post['category']}}</div>
+            @endforeach
+        </div>
+    </section>
+
+    <!-- Recent Posts Section -->
+    <section id="recent-posts" class="my-5 py-5 px-2.5">
+        <h2 class="text-center text-4xl mb-6 capitalize">Recent Posts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            @foreach ($posts as $post)
+                <div class="p-2.5 overflow-hidden">
+                    <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
+                        <div class="overflow-hidden">
+                            <img src="{{ $post['hero_image'] }}" alt="{{ $post['title'] }}" class="rounded-t-lg rounded-br-[300px]">
                         </div>
-                        <h3>{{$post['title']}}</h3>
-                        <p>{{$post['excerpt']}}</p>
-                    </div>
-                    <div class="posts-card-footer">
-                        <small>By {{$post['author']}}</small>
-                    </div>
-                </a>
+                        <div class="p-2.5">
+                            <div class="flex justify-end mb-2.5">
+                                <div class="bg-gray-800 text-white px-2.5 py-1 rounded-full">{{ $post['category'] }}</div>
+                            </div>
+                            <h3>{{ $post['title'] }}</h3>
+                            <p>{{ $post['excerpt'] }}</p>
+                        </div>
+                        <div class="border-t border-gray-300 p-2.5 text-center">
+                            <small>By {{ $post['author'] }}</small>
+                        </div>
+                    </a>
                 </div>
-                @endforeach
-            </div>
-        </section>
-        <section id="featured-categories">
-            <h2>Featured Categories</h2>
-            <!-- List of featured categories -->
-        </section>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- <!-- Featured Categories Section -->
+    <section id="featured-videos" class="my-5 py-5 px-2.5">
+        <h2 class="text-center text-4xl mb-6 capitalize">Featured Videos</h2>
+        <!-- List of featured categories -->
+    </section> --}}
 @endsection

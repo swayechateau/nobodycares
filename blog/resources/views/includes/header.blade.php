@@ -41,7 +41,7 @@
     <nav class="navigation">
         <a href="{{ route('home', app()->getLocale()) }}">Home</a>
         <a href="{{ route('posts.index', app()->getLocale()) }}">Posts</a>
-        <a href="{{ route('categories', app()->getLocale()) }}">Categories</a>
+        <a href="https://www.youtube.com/channel/UC-lu2LmQhMo7k0_66pHzH8Q" target="_blank">Channel</a>
     </nav>
     <div class="app-header-right">
         <!-- Language switcher -->

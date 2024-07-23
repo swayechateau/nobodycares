@@ -8,7 +8,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
+    <script src="https://cdn.tailwindcss.com"></script>
     @yield('styles')
     <style>
         * {
@@ -21,10 +21,7 @@
             margin: 0;
             padding: 0;
         }
-        body {
-            display: flex;
-            flex-direction: column;
-        }
+
         a {
             text-decoration: none;
             color: initial;
@@ -35,10 +32,7 @@
         img {
             width: 100%;
         }
-        main {
-            flex: 1;
-            padding: 20px;
-        }
+
 
 		@media (prefers-color-scheme: dark) {
 			body {
@@ -48,9 +42,9 @@
 		} 
 	</style>
 </head>
-<body>
+<body class="flex flex-col">
     @include('includes.header')
-    <main>
+    <main class="grow">
     @yield('content')
     </main>
     @include('includes.footer')
