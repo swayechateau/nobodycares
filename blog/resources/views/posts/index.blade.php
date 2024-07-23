@@ -115,7 +115,7 @@
     <section id="posts" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 justify-center p-8 lg:container mx-auto">
         @foreach ($posts as $post)
             <div
-                class="hover:bg-[#333] rounded-lg p-2.5 md:first:col-span-2 lg:first:col-span-1 xl:first:col-span-2 overflow-hidden hover:animate-pulse delay-75 transition duration-150 ease-in-out">
+                class="hover:bg-gray-800  rounded-lg p-2.5 md:first:col-span-2 lg:first:col-span-1 xl:first:col-span-2 overflow-hidden hover:animate-pulse delay-75 transition duration-150 ease-in-out">
                 <a class="h-full flex flex-col" href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
                     <div class="overflow-hidden">
                         <img src="{{ $post['hero_image'] }}" alt="{{ $post['title'] }}"
