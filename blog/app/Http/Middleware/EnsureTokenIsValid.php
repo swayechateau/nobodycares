@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Log;
 
 class EnsureTokenIsValid
 {
@@ -18,6 +19,8 @@ class EnsureTokenIsValid
         // check bearer token
         $bearerToken = $request->bearerToken();
         if ($bearerToken !== config('app.api_token')) {
+            Log::info('Unauthorized request');
+            Log::info('Bearer token: ' . $bearerToken);
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
