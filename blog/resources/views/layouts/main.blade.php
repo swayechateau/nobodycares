@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full w-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
 		} 
 	</style>
 </head>
-<body class="flex flex-col bg-[#0d1117] text-[#c9d1d9]">
+<body class="flex flex-col bg-[#0d1117] text-[#c9d1d9] h-full w-full">
     @include('includes.header')
     <main class="grow">
     @yield('content')
