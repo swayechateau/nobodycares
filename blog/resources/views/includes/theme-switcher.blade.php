@@ -1,27 +1,12 @@
 <style>
-    .switch {
+    .slider {
         position: relative;
         display: inline-block;
         width: 60px;
         height: 34px;
-    }
-
-    .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
         background-color: #ccc;
-        transition: 0.4s;
         border-radius: 34px;
+        transition: background-color 0.4s;
     }
 
     .slider:before {
@@ -40,6 +25,12 @@
         background-repeat: no-repeat;
     }
 
+    .slider input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
     input:checked + .slider {
         background-color: #2196F3;
     }
@@ -47,11 +38,10 @@
     input:checked + .slider:before {
         transform: translateX(26px);
         background-image: url('https://img.icons8.com/ios-filled/50/000000/moon-symbol.png');
-        background-size: 18px;
     }
 </style>
 
-<label class="switch">
-    <input type="checkbox">
-    <span class="slider"></span>
+<label class="slider relative cursor-pointer block">
+    <input type="checkbox" class="absolute opacity-0 w-0 h-0">
+    <span class="slider absolute block bg-gray-300 w-full h-full rounded-full transition-colors duration-300 ease-in-out"></span>
 </label>

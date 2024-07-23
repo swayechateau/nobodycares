@@ -44,23 +44,34 @@ class PostController extends Controller
     public function search(Request $request)
     {
         // only this app can access this endpoint
-        $query = $request->input('query');
-        $posts = [];
+        $validated = $request->validate([
+            'query' => 'nullable|string|max:255'
+        ]);
 
-        try {
-            $posts = Post::whereFullText(['title', 'content'], $query)->get();
-        } catch (\Exception $e) {
-            Log::error("Error searching posts: " . $e->getMessage());
+        $query = $validated['query'] ?? null;
+        if (!$request->expectsJson()) {
+            return redirect()->route('posts.index', app()->getLocale(), ['search' => $query]);
         }
 
-        if ($request->expectsJson()) {
+        $posts = [];
+        if (!$query) {
+            $title = "Posts" . " - NobodyCares";
+            $posts = Post::latest()->get()->makeHidden(['content']);
             return response()->json([
-                "query" => $query, 
+                "title" => $title,
                 "results" => $posts
             ]);
         }
 
-        return view('posts.search', compact('posts', 'query'));
+        $title = "Search results for '{$query}' - NobodyCares";
+        $posts = Post::where('title', 'like', '%' . $query . '%')
+            ->orWhere('content', 'like', '%' . $query . '%')
+            ->orWhere('category', 'like', '%' . $query . '%')
+            ->get()->makeHidden(['content']);
+        return response()->json([
+            "title" => $title,
+            "results" => $posts
+        ]);
     }
 
     public function home($locale)
@@ -72,13 +83,28 @@ class PostController extends Controller
         return view('index', compact('title', 'featuredPosts', 'posts'));
     }
 
-    public function index($locale)
+    public function index($locale, Request $request)
     {
-        $posts = Post::where('locale', $locale)->latest()->get();
+        $validated = $request->validate([
+            'search' => 'nullable|string|max:255'
+        ]);
+
+        $query = $validated['search'] ?? null;
+        $categories = Post::select('category')->distinct()->pluck('category');
+        if (!$query) {
+            $posts = Post::where('locale', $locale)->latest()->get()->makeHidden(['content']);
+            $title = "Posts" . " - NobodyCares";
+            return view('posts.index', compact('posts', 'title', 'query', 'categories'));
+        }
         
-        $title = "Posts" . " - NobodyCares";
-        
-        return view('posts.index', compact('posts', 'title'));
+        // search for posts
+        $posts = Post::where('title', 'like', '%' . $query . '%')
+                    ->orWhere('content', 'like', '%' . $query . '%')
+                    ->orWhere('category', 'like', '%' . $query . '%')
+                    ->get()->makeHidden(['content']);
+                    
+        $title = "Search results for '{$query}' - NobodyCares";
+        return view('posts.index', compact('posts', 'title', 'query', 'categories'));
     }
 
     public function show($locale, $slug)
@@ -111,13 +137,6 @@ class PostController extends Controller
         }
     }
 
-    
-    public function categories($locale)
-    {
-        $categories = ['Laravel', 'PHP', 'JavaScript', 'Vue.js', 'React.js'];
-        $title = "Categories";
-        return view('posts.categories', compact('categories', 'title'));
-    }
 }
 
 

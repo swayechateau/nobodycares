@@ -11,29 +11,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     @yield('styles')
     <style>
-        * {
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        a {
-            text-decoration: none;
-            color: initial;
-        }
-        a:hover {
-            text-decoration: none;
-        }
-        img {
-            width: 100%;
-        }
-
-
 		@media (prefers-color-scheme: dark) {
 			body {
 				background-color: #0d1117;
@@ -42,7 +19,7 @@
 		} 
 	</style>
 </head>
-<body class="flex flex-col">
+<body class="flex flex-col bg-[#0d1117] text-[#c9d1d9]">
     @include('includes.header')
     <main class="grow">
     @yield('content')

@@ -13,7 +13,7 @@
                     <div class="uppercase pl-2 mb-4 text-shadow text-white">
                         Etching my journey, One post at a time
                     </div>
-                    <a href="/blog/posts"
+                    <a href="{{url(app()->getLocale() . '/posts/')}}"
                         class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
                         View All Posts
                     </a>

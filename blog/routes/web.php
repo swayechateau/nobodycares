@@ -8,9 +8,11 @@ Route::get('/', function () {
     return redirect(app()->getLocale());
 });
 
+Route::get('/search', [PostController::class, 'search'])->name('search');
+
 Route::group(['prefix' => '{locale}', 'middleware' => 'web'], function () {
     Route::get('/', [PostController::class, 'home'])->name('home');
-    Route::get('/search', [PostController::class, 'search'])->name('search');
+    
 
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
     Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show');

@@ -110,7 +110,6 @@ class Post extends Model
             $parsedContent = $this->parseMarkdownFile($markdownContent);
 
             $this->filename = $parsedContent['filename'];
-            $this->slug = $parsedContent['slug'];
             $this->locale = $parsedContent['locale'] ?? $this->locale;
             $this->title = $parsedContent['title'];
             $this->featured = $parsedContent['featured'];
