@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <section id="hero" class="relative h-[300px] w-full bg-cover bg-center rounded-br-[200px]"
+    <section id="hero" class="relative h-[300px] w-full bg-cover bg-center rounded-br-[200px] rounded-bl-[200px]"
         style="background-image: url('https://swayechateau.com/media/image/anime-girl-futuristic-city-computer-short-hair-coffee-25464.jpeg');">
-        <div class="absolute inset-0 bg-black h-full w-full bg-opacity-50 rounded-br-[200px]"></div>
+        <div class="absolute inset-0 bg-black h-full w-full bg-opacity-50 rounded-br-[200px] rounded-bl-[200px]"></div>
         <div class="flex h-full items-center justify-center p-3 z-10 relative">
             <div class="text-center">
                 <div class="text-xl font-light text-white text-shadow">
