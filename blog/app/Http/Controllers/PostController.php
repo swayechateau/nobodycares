@@ -119,6 +119,7 @@ class PostController extends Controller
                 $post->cache();
                 
                 // Check if the locale matches
+                Log::info("Post locale: {$post->locale} - Requested locale: {$locale}");
                 if ($post->locale != $locale) {
                     abort(404);
                 }

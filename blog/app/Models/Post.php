@@ -94,6 +94,7 @@ class Post extends Model
     public function cache(): void
     {
         $filePath = $this->getMarkdownFilePath();
+        Log::debug("Attempting to cache post from Markdown file at: {$filePath}");
 
         if (!File::exists($filePath)) {
             Log::warning("Markdown file not found for post ID {$this->id}: {$filePath}");
@@ -107,7 +108,7 @@ class Post extends Model
 
         if (!$this->exists || $this->updated_at->timestamp < $fileLastModified) {
             $markdownContent = $this->getMarkdownFile();
-            $parsedContent = $this->parseMarkdownFile($markdownContent);
+            $parsedContent = $this->convertMarkdownContent($markdownContent, $this->filename);
 
             $this->filename = $parsedContent['filename'];
             $this->locale = $parsedContent['locale'] ?? $this->locale;
@@ -136,56 +137,55 @@ class Post extends Model
      * @return array
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function parseMarkdownFile(string $file): array
+    public function parseMarkdownFile(string $filePath): array
     {
-        if (!File::exists($file)) {
-            throw new \Illuminate\Contracts\Filesystem\FileNotFoundException("File not found at path: {$file}");
+        if (!File::exists($filePath)) {
+            Log::error("Markdown file not found at path: {$filePath}");
+            throw new \Illuminate\Contracts\Filesystem\FileNotFoundException("File not found at path: {$filePath}");
         }
 
-        $fileContent = File::get($file);
-        $filename = pathinfo($file, PATHINFO_FILENAME);
+        // If it's a file, read the file content
+        $fileContent = File::get($filePath);
+        $filename = pathinfo($filePath, PATHINFO_FILENAME);
 
-        // Default values
-        $title = str_replace('-', ' ', ucfirst($filename));
-        $featured = false;
-        $excerpt = '';
-        $locale = 'en';
-        $hero_image = 'https://via.placeholder.com/150';
-        $category = '';
-        $author = 'NobodyCares';
-        $content = $fileContent;
-        $slug = $filename;
+        return $this->convertMarkdownContent($fileContent, $filename);
+    }
 
-        // Extracting YAML front matter
+    /**
+     * Convert the markdown content to an array.
+     *
+     * @param string $fileContent
+     * @param string $filename
+     * @return array
+     */
+    public function convertMarkdownContent(string $fileContent, string $filename): array
+    {
+        // Default values for the properties
+        $defaults = [
+            'filename' => $filename,
+            'locale' => 'en',
+            'title' => str_replace('-', ' ', ucfirst($filename)),
+            'featured' => false,
+            'excerpt' => '',
+            'hero_image' => 'https://via.placeholder.com/150',
+            'category' => '',
+            'author' => 'NobodyCares',
+            'content' => $fileContent,
+            'slug' => $filename,
+        ];
+
+        // Extract YAML front matter if present
         if (preg_match('/---(.*?)---/s', $fileContent, $matches)) {
             $yaml = Yaml::parse($matches[1]);
+            $content = str_replace($matches[0], '', $fileContent); // Remove front matter from content
+            $parsedData = array_merge($defaults, $yaml, ['content' => $content]);
 
-            // Extract the necessary details
-            $slug = $yaml['slug'] ?? $slug;
-            $title = $yaml['title'] ?? $title;
-            $locale = $yaml['locale'] ?? $locale;
-            $featured = $yaml['featured'] ?? $featured;
-            $excerpt = $yaml['excerpt'] ?? $excerpt;
-            $hero_image = $yaml['hero_image'] ?? $hero_image;
-            $category = $yaml['category'] ?? $category;
-            $author = $yaml['author'] ?? $author;
-            $content = str_replace($matches[0], '', $fileContent); // Save content without front matter
+            return $parsedData;
         }
 
-        // Build post data array
-        return [
-            'filename' => $filename,
-            'locale' => $locale,
-            'slug' => $slug,
-            'title' => $title,
-            'featured' => $featured,
-            'excerpt' => $excerpt,
-            'hero_image' => $hero_image,
-            'category' => $category,
-            'author' => $author,
-            'content' => $content,
-        ];
+        return $defaults;
     }
+
 
 }
 
