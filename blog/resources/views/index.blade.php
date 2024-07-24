@@ -27,64 +27,67 @@
         </div>
 
     </section>
-
-    <!-- Featured Posts Section -->
-    <section id="featured-posts" class="my-5 py-5 px-2.5">
-        <h2 class="text-center text-4xl mb-6 capitalize">Featured Posts</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            @foreach ($featuredPosts as $post)
-                <div class="p-2.5 overflow-hidden hover:bg-gray-800 hover:animate-subtle-bounce rounded-lg">
-                    <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
-                        <div class="overflow-hidden">
-                            <img src="{{ $post['hero_image'] }}" alt="{{ $post['title'] }}"
-                                class="rounded-t-lg rounded-br-[300px]">
-                        </div>
-                        <div class="p-2.5">
-                            <div class="flex justify-end mb-2.5">
-                                <div class="bg-gray-800 text-white px-2.5 py-1 rounded-full">{{ $post['category'] }}</div>
+    <div class="container mx-auto">
+        <!-- Featured Posts Section -->
+        <section id="featured-posts" class="my-5 py-5 px-2.5">
+            <h2 class="text-center text-4xl mb-6 capitalize">Featured Posts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                @foreach ($featuredPosts as $post)
+                    <div class="p-2.5 overflow-hidden hover:bg-gray-800 hover:animate-subtle-bounce rounded-lg">
+                        <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
+                            <div class="overflow-hidden">
+                                <img src="{{ $post['hero_image'] }}" alt="{{ $post['title'] }}"
+                                    class="rounded-t-lg rounded-br-[300px]">
                             </div>
-                            <h3 class="pt-6 pb-4 text-lg font-semibold">{{ $post['title'] }}</h3>
-                            <p>{{ $post['excerpt'] }}</p>
-                        </div>
-                        <div class="border-t border-gray-300 p-2.5 text-center">
-                            <small>By {{ $post['author'] }}</small>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-    </section>
-
-    <!-- Recent Posts Section -->
-    <section id="recent-posts" class="my-5 py-5 px-2.5">
-        <h2 class="text-center text-4xl mb-6 capitalize">Recent Posts</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            @foreach ($posts as $post)
-                <div class="p-2.5 overflow-hidden hover:bg-gray-800 hover:animate-subtle-bounce rounded-lg">
-                    <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
-                        <div class="overflow-hidden">
-                            <img src="{{ $post['hero_image'] }}" alt="{{ $post['title'] }}"
-                                class="rounded-t-lg rounded-br-[300px]">
-                        </div>
-                        <div class="p-2.5">
-                            <div class="flex justify-end mb-2.5">
-                                <div class="bg-gray-800 text-white px-2.5 py-1 rounded-full">{{ $post['category'] }}</div>
+                            <div class="p-2.5">
+                                <div class="flex justify-end mb-2.5">
+                                    <div class="bg-gray-800 text-white px-2.5 py-1 rounded-full">{{ $post['category'] }}
+                                    </div>
+                                </div>
+                                <h3 class="pt-6 pb-4 text-lg font-semibold">{{ $post['title'] }}</h3>
+                                <p>{{ $post['excerpt'] }}</p>
                             </div>
-                            <h3 class="pt-6 pb-4 text-lg font-semibold">{{ $post['title'] }}</h3>
-                            <p>{{ $post['excerpt'] }}</p>
-                        </div>
-                        <div class="border-t border-gray-300 p-2.5 text-center">
-                            <small>By {{ $post['author'] }}</small>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-    </section>
+                            <div class="border-t border-gray-300 p-2.5 text-center">
+                                <small>By {{ $post['author'] }}</small>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </section>
 
-    {{-- <!-- Featured Categories Section -->
+        <!-- Recent Posts Section -->
+        <section id="recent-posts" class="my-5 py-5 px-2.5">
+            <h2 class="text-center text-4xl mb-6 capitalize">Recent Posts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                @foreach ($posts as $post)
+                    <div class="p-2.5 overflow-hidden hover:bg-gray-800 hover:animate-subtle-bounce rounded-lg">
+                        <a href="{{ url(app()->getLocale() . '/posts/' . $post['slug']) }}">
+                            <div class="overflow-hidden">
+                                <img src="{{ $post['hero_image'] }}" alt="{{ $post['title'] }}"
+                                    class="rounded-t-lg rounded-br-[300px]">
+                            </div>
+                            <div class="p-2.5">
+                                <div class="flex justify-end mb-2.5">
+                                    <div class="bg-gray-800 text-white px-2.5 py-1 rounded-full">{{ $post['category'] }}
+                                    </div>
+                                </div>
+                                <h3 class="pt-6 pb-4 text-lg font-semibold">{{ $post['title'] }}</h3>
+                                <p>{{ $post['excerpt'] }}</p>
+                            </div>
+                            <div class="border-t border-gray-300 p-2.5 text-center">
+                                <small>By {{ $post['author'] }}</small>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        {{-- <!-- Featured Categories Section -->
     <section id="featured-videos" class="my-5 py-5 px-2.5">
         <h2 class="text-center text-4xl mb-6 capitalize">Featured Videos</h2>
         <!-- List of featured categories -->
     </section> --}}
+    </div>
 @endsection
