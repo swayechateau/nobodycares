@@ -21,7 +21,7 @@
 		} 
 	</style>
 </head>
-<body class="flex flex-col bg-[#0d1117] text-[#c9d1d9] h-full w-full">
+<body class="flex flex-col bg-[#0d1117] text-[#c9d1d9] h-full w-full md:pb-24"">
     @include('includes.header')
     <main class="grow">
     @yield('content')

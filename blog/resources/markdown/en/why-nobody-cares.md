@@ -2,7 +2,7 @@
 slug: "why-nobody-cares"
 title: "Why NobodyCares?"
 featured: true
-excerpt: "'NobodyCares is a conduit to teach what I know to my future self and others. It emphasizes simplicity and progress over endless tech debates. It offers insights for those who, like me, have learned that what matters most is continuous learning, making progress and keeping things simple."
+excerpt: "NobodyCares is a conduit to teach what I know to my future self and others. It emphasizes simplicity and progress over endless tech debates. It offers insights for those who, like me, have learned that what matters most is continuous learning, making progress and keeping things simple."
 hero_image: "https://images.unsplash.com/photo-1639930940899-7f6d1661bcb8?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 category: "General"
 author: "NobodyCares"

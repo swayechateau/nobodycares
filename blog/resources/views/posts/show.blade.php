@@ -2,8 +2,8 @@
 @section('content')
     <section id="post-content">
         <!-- post header -->
-        <div class="relative" style="height: 35vh; min-height: 350px;">
-            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ $post->hero_image }}');">
+        <div class="relative" style="height: 35vh; min-height: 350px; rounded-br-[200px] rounded-bl-[200px]">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ $post->hero_image }}'); rounded-br-[200px] rounded-bl-[200px]">
                 <div class="flex flex-col justify-center items-center h-full bg-black bg-opacity-40">
                     <h1 class="p-3 text-white text-3xl font-bold">{{ $post->title }}</h1>
                     <div class="text-lg text-blue-200">{{ $post->category }}</div>
@@ -12,34 +12,39 @@
         </div>
         <!-- post content -->
         <div class="relative -mt-10 z-10 px-4 pb-10 grid grid-cols-12 gap-5">
-            <article class="bg-[#333] p-3 rounded col-span-12 lg:col-span-9">
-                <div class="flex flex-row p-4 text-lg">
-                    <div class="grow"><span class="text-yellow-100 font-bold">Updated:</span> {{ $post->updated_at }}
+            <article class="bg-[#0d1117] p-3 rounded col-span-12 lg:col-span-9">
+                <div class="flex flex-col sm:flex-row p-4 text-lg">
+                    <div class="grow">
+                        <span class="text-yellow-100 font-bold" data-time="{{$post->updated_at}}">Updated:</span> {{ $post->updated_at->format('F d, Y') }}
                     </div>
-                    <div class="p-2 bg-gray-500 text-gray-100 text-sm capitalize rounded">{{ $post->read_time }} minute read
+                    <div class="p-2 sm:bg-gray-500 text-gray-100 text-sm capitalize rounded text-right">
+                        {{ $post->read_time }} minute read
                     </div>
                 </div>
-                <div class="markdown-body">
+                <div class="markdown-body text-lg">
                     {!! $content !!}
                 </div>
-                <div class="flex flex-row p-4 text-lg">
-                    <div class="grow"><span class="font-bold text-yellow-100">Created:</span> {{ $post->created_at }}
+                <div class="flex flex-col-reverse sm:flex-row p-4 text-lg">
+                    <div class="grow">
+                        <span class="font-bold text-yellow-100" data-time="{{$post->created_at}}">Created:</span> {{ $post->created_at->format('F d, Y') }}
                     </div>
-                    <div class="italic"><span class="font-bold text-gray-100">Author:</span> {{ $post->author }}</div>
+                    <div class="italic">
+                        <span class="font-bold text-gray-100">Author:</span> {{ $post->author }}
+                    </div>
                 </div>
             </article>
             <div class="col-span-12 lg:col-span-3 relative">
-                <aside class="bg-[#333] p-3 rounded flex lg:sticky lg:top-5 w-full">
+                <aside class="bg-[#333] p-3 rounded flex lg:sticky lg:top-20 w-full">
                     <div class="container mx-auto px-4">
                     <div>
                         <input type="text" class="w-full p-2 bg-gray-800 text-gray-100 rounded focus:outline-none"
                             placeholder="Search">
                     </div>
-                        <hr class="my-4">
+                        {{-- <hr class="my-4">
                         <h2 class="capitalize font-semibold mb-3">recent posts</h2>
                         <div class="space-y-4">
 
-                        </div>
+                        </div> --}}
                     </div>
                 </aside>
             </div>

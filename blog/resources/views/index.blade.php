@@ -44,8 +44,8 @@
                                     <div class="bg-gray-800 text-white px-2.5 py-1 rounded-full">{{ $post['category'] }}
                                     </div>
                                 </div>
-                                <h3 class="pt-6 pb-4 text-lg font-semibold">{{ $post['title'] }}</h3>
-                                <p>{{ $post['excerpt'] }}</p>
+                                <h3 class="pt-6 pb-4 text-xl font-semibold">{{ $post['title'] }}</h3>
+                                <p class="mb-4 text-lg">{{ $post['excerpt'] }}</p>
                             </div>
                             <div class="border-t border-gray-300 p-2.5 text-center">
                                 <small>By {{ $post['author'] }}</small>
@@ -72,8 +72,8 @@
                                     <div class="bg-gray-800 text-white px-2.5 py-1 rounded-full">{{ $post['category'] }}
                                     </div>
                                 </div>
-                                <h3 class="pt-6 pb-4 text-lg font-semibold">{{ $post['title'] }}</h3>
-                                <p>{{ $post['excerpt'] }}</p>
+                                <h3 class="pt-6 pb-4 text-xl font-semibold">{{ $post['title'] }}</h3>
+                                <p class="mb-4 text-lg">{{ $post['excerpt'] }}</p>
                             </div>
                             <div class="border-t border-gray-300 p-2.5 text-center">
                                 <small>By {{ $post['author'] }}</small>

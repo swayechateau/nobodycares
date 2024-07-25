@@ -1,4 +1,4 @@
-<header class="bg-gray-800 text-white p-2.5 flex items-center justify-between shadow">
+<header class="bg-gray-800 text-white p-2.5 flex items-center justify-between shadow fixed bottom-0 md:top-0 md:bottom-auto w-full z-30">
     <div class="text-4xl p-1.5"> <!-- Adjusted padding and font size -->
         NC
     </div>
