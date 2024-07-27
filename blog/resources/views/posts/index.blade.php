@@ -1,9 +1,24 @@
 @extends('layouts.main')
 
+@section('meta')
+    <meta name="description" content="Welcome to NobodyCares. Etching my journey, One post at a time">
+    <meta name="keywords" content="blog, posts, articles, web development, programming, technology">
+    <meta name="author" content="NobodyCares">
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="Welcome to NobodyCares. Etching my journey, One post at a time">
+    <meta property="og:image" content="{{ asset('img/site_hero.webp') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $title }}">
+    <meta name="twitter:description" content="Welcome to NobodyCares. Etching my journey, One post at a time">
+    <meta name="twitter:image" content="{{ asset('img/site_hero.webp') }}">
+@endsection
+
 @section('content')
 
     <section id="hero" class="relative h-[300px] w-full bg-cover bg-center rounded-br-[200px] rounded-bl-[200px]"
-        style="background-image: url('https://swayechateau.com/media/image/anime-girl-futuristic-city-computer-short-hair-coffee-25464.jpeg');">
+        style="background-image: url('{{asset("/img/site_hero.webp")}}');">
         <div class="absolute inset-0 bg-black h-full w-full bg-opacity-50 rounded-br-[200px] rounded-bl-[200px]"></div>
         <div class="flex h-full items-center justify-center p-3 z-10 relative">
             <div class="text-center">
@@ -64,6 +79,9 @@
                             }
                             // Update page title
                             document.title = title;
+                            // update tilte meta
+                            document.querySelector('meta[property="og:title"]').setAttribute('content', title);
+                            document.querySelector('meta[name="twitter:title"]').setAttribute('content', title);
                             // Rebuild the URL and push update to history
                             window.history.pushState({}, title, url);
                         }

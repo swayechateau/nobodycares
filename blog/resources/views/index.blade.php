@@ -1,9 +1,24 @@
 @extends('layouts.main')
 
+@section('meta')
+    <meta name="description" content="Welcome to NobodyCares. Etching my journey, One post at a time">
+    <meta name="keywords" content="blog, posts, articles, web development, programming, technology">
+    <meta name="author" content="NobodyCares">
+    <meta property="og:title" content="NobodyCares">
+    <meta property="og:description" content="Welcome to NobodyCares. Etching my journey, One post at a time">
+    <meta property="og:image" content="{{ asset('img/site_hero.webp') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NobodyCares">
+    <meta name="twitter:description" content="Welcome to NobodyCares. Etching my journey, One post at a time">
+    <meta name="twitter:image" content="{{ asset('img/site_hero.webp') }}">
+@endsection
+
 @section('content')
     <!-- Hero Section -->
     <section id="hero" class="relative h-[400px] w-full bg-cover bg-center rounded-bl-[200px]"
-        style="background-image: url('https://swayechateau.com/media/image/anime-girl-futuristic-city-computer-short-hair-coffee-25464.jpeg');">
+        style="background-image: url('{{asset("/img/site_hero.webp")}}');">
         <style>
             .text-shadow {
                 text-shadow: 2px 2px #000;

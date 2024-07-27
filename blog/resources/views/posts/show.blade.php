@@ -1,4 +1,23 @@
 @extends('layouts.main')
+@section('meta')
+    <meta name="description" content="{{ $post->excerpt }}">
+    <meta name="keywords" content="{{ $post->tags }}">
+    <meta name="author" content="{{ $post->author }}">
+    <meta property="og:title" content="{{ $post->title }}">
+    <meta property="og:description" content="{{ $post->excerpt }}">
+    <meta property="og:image" content="{{ $post->hero_image }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="{{ $post->created_at }}">
+    <meta property="article:modified_time" content="{{ $post->updated_at }}">
+    <meta property="article:author" content="{{ $post->author }}">
+    <meta property="article:section" content="{{ $post->category }}">
+    <meta property="article:tag" content="{{ $post->tags }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $post->title }}">
+    <meta name="twitter:description" content="{{ $post->excerpt }}">
+    <meta name="twitter:image" content="{{ $post->hero_image }}">
+@endsection
 @section('content')
     <section id="post-content">
         <!-- post header -->
