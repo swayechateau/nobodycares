@@ -2,7 +2,7 @@
 title: "Building the Solemnity Meta Project"
 featured: false
 excerpt: "Solemnity Meta is part of the solemnity suite, a microservice that extracts metadata from URLs and returns it in JSON format, ideal for applications like Twitter cards. Developed using Go and Docker, it ensures efficient, accurate metadata extraction. The project demonstrates the power of microservices and the efficiency of Go for web data handling."
-hero_image: "https://file.swayechateau.com/view/globalMaJKf2UDzFdqba7hG96U6?share_code=s6LHjQlIsFHc"
+hero_image: "https://github.com/swayechateau/solemnity-meta/raw/main/meta_mascot.webp"
 category: "Case Study"
 author: "NobodyCares"
 ---
@@ -16,15 +16,12 @@ In today's digital era, extracting and utilizing metadata from web links is esse
 ### Objectives
 
 - **Create a Simple Microservice:** Develop a microservice to efficiently extract metadata from URLs.
-
 - **Utilize Go for Development:** Leverage the Go programming language for its efficiency and performance.
-
 - **Provide JSON Output:** Ensure the metadata is returned in JSON format for easy integration with other services.
 
 ### Technology Stack
 
 - **Go:** A statically typed, compiled programming language designed for simplicity and performance.
-
 - **Docker:** Used for containerizing the application to ensure portability and ease of deployment.
 
 ### Development Process
@@ -42,12 +39,11 @@ The core functionality of Solemnity Meta involves making HTTP requests to URLs a
 Two API endpoints were created:
 
 - **GET Request:** Allows users to retrieve metadata by passing a URL as a query parameter.
-
 - **POST Request:** Accepts a URL in the request body and returns the metadata.
 
 #### 4. Testing and Optimization
 
-Extensive testing was conducted to ensure the microservice could handle various types of URLs and return accurate metadata. Performance optimizations were implemented to ensure quick response times.
+Testing was conducted to ensure the microservice could handle various types of URLs and return accurate metadata. Performance optimizations were implemented to ensure quick response times.
 
 ### Challenges and Solutions
 
@@ -393,7 +389,7 @@ curl -X POST -d 'link=www.youtube.com/watch?v=NeaXsRg5ho0' -d 'all=yes' https://
 
 ### Conclusion
 
-The development of Solemnity Meta demonstrates the power of microservices and the efficiency of the Go programming language. By creating a tool that simplifies metadata extraction, this project highlights the importance of making web data more accessible and usable for various applications.
+The development of Solemnity Meta presented challenges during its transition from PHP to Go, primarily due to Go's static typing and the need to leverage its performance advantages. Ultimately, the application became more performant, secure, and lightweight. This project underscores the importance of selecting the right tool for the job and understanding the project's scope. Additionally, the Meta microservice enhances the accessibility and usability of web data for various applications.
 
 ---
 
